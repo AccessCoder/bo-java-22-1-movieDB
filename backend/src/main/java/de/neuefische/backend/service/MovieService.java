@@ -29,7 +29,6 @@ public class MovieService {
             throw new IllegalArgumentException("Given movie is missing mandatory title");
         }
 
-
         // Generate and set id for new movie
         movie.setId(idService.generateId());
 
@@ -37,14 +36,11 @@ public class MovieService {
     }
 
     public Movie getMovie(String id) {
-        // Versuche ein Movie aus der DB auszulesen
-        // Falls für die ID kein Movie gefunden wurde, werfe Exception
-        return repo.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Not a single movie found with id:" + id));
+        return repo.findById(id);
     }
 
-    public void deleteMovie(String id) {
-        repo.deleteById(id);
+    public Movie deleteMovie(String id) {
+       return repo.deleteById(id);
     }
 
     public Movie updateMovie(Movie movie) {

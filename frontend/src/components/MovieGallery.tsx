@@ -11,18 +11,10 @@ type MovieGalleryProps = {
     getAllMovies:() => void;
     postNewMovie:(newMovie:Movie) => void;
     deleteMovie:(id:string) => void;
-    me: UserInfo;
 }
 
 export default function MovieGallery(props:MovieGalleryProps){
 
-    function isAdmin() {
-        if (props.me && props.me.roles.find(role => role === "ADMIN")) {
-            return true
-        } else {
-            return false
-        }
-    }
 
     const [name, setName] = useState("");
     const [year, setYear] = useState("");
@@ -47,9 +39,7 @@ export default function MovieGallery(props:MovieGalleryProps){
 
     return(
         <>
-            {isAdmin() &&
-                <p>🦸 Super secret text for Admins only!! 🦸</p>
-            }
+
             <form onSubmit={(e) => onCreate(e)}>
                 <input name={"title"} placeholder={"title"} onChange={event => setName(event.target.value)}/>
                 <input name={"year"} placeholder={"year"} onChange={event => setYear(event.target.value)}/>
