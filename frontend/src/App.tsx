@@ -14,6 +14,7 @@ function App() {
     const {movies, getAllMovies, postNewMovie, updateMovie, deleteMovie} = useMovies()
 
     return (
+
         <div className="App">
             <ToastContainer position="top-right"
                             autoClose={5000}
@@ -31,7 +32,6 @@ function App() {
                     <NavBar/>
 
                     <Routes>
-
                         <>
                             <Route path={"/homepage"} element={<Homepage/>}/>
                             <Route path={"/"} element={<MovieGallery movies={movies} getAllMovies={getAllMovies}
